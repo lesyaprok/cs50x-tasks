@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    History
+{% endblock %}
+
+{% block main %}
+    <table class="table">
+        <tr>
+            <th>Purchase/sale</th>
+            <th>Symbol</th>
+            <th>Shares</th>
+            <th>Price</th>
+            <th>Date and time</th>
+        </tr>
+        {% for row in user_transactions %}
+            <tr>
+                {% if row["shares"] < 0 %}
+                <td>Sale</td>
+                {% else %}
+                <td>Purchase</td>
+                {% endif %}
+                <td>{{ row["symbol"] }}</td>
+                <td>{{ row["shares"] }}</td>
+                <td>{{ "$%.2f"|format(row["price"]) }}</td>
+                <td>{{ row["timestamp"]}}</td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

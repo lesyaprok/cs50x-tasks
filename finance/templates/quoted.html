@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Quote
+{% endblock %}
+
+
+{% block main %}
+    <table class="mx-auto table">
+        <tr class="my-3">
+            <th>Symbol</th>
+            <th>Name</th>
+            <th>Price</th>
+        </tr>
+        <tr>
+            <td>{{ symbol }}</td>
+            <td>{{ name }}</td>
+            <td>{{ "$%.2f"|format(price) }}</td>
+        </tr>
+    </table>
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+{% block main %}
+    <table class="table">
+        <tr>
+            <th>Symbol</th>
+            <th>Name</th>
+            <th>Shares</th>
+            <th>Price</th>
+            <th>TOTAL</th>
+        </tr>
+        {% for row in user_purchase %}
+            <tr>
+                <td>{{ row["symbol"] }}</td>
+                <td>{{ row["company_name"] }}</td>
+                <td>{{ row["shares"] }}</td>
+                <td>{{ "$%.2f"|format(row["price"]) }}</td>
+                <td>{{ "$%.2f"|format(row["total"]) }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+    <div class="my-3">
+        <h2>Cash</h2>
+        <span>{{ "$%.2f"|format(cash) }}</span>
+    </div>
+    <div>
+        <h2>TOTAL</h2>
+        <span>{{ "$%.2f"|format(grand_total) }}</span>
+    </div>
+{% endblock %}
